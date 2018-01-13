@@ -1,0 +1,227 @@
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreatePoints (20180109101402)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "points" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" varchar, "point" integer, "from_user" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180109101402"]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-01-10 13:46:19.407667"], ["updated_at", "2018-01-10 13:46:19.407667"]]
+  [1m[35m (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "points" ("user_id", "point", "from_user", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", "<@U8QHYPXC2>"], ["point", 1], ["from_user", "U8Q0M57RQ"], ["created_at", "2018-01-10 13:49:27.759254"], ["updated_at", "2018-01-10 13:49:27.759254"]]
+  [1m[35m (5.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPoint Load (0.2ms)[0m  [1m[34mSELECT  "points".* FROM "points" ORDER BY "points"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "points" ("user_id", "point", "from_user", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", "<@U8QHYPXC2>"], ["point", 1], ["from_user", "U8Q0M57RQ"], ["created_at", "2018-01-10 13:51:10.803632"], ["updated_at", "2018-01-10 13:51:10.803632"]]
+  [1m[35m (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPoint Load (0.2ms)[0m  [1m[34mSELECT  "points".* FROM "points" WHERE "points"."user_id" = ? LIMIT ?[0m  [["user_id", "<@U8QHYPXC2>"], ["LIMIT", 11]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "points" ("user_id", "point", "from_user", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", "<@U8QHYPXC2>"], ["point", 1], ["from_user", "U8Q0M57RQ"], ["created_at", "2018-01-10 13:52:24.283095"], ["updated_at", "2018-01-10 13:52:24.283095"]]
+  [1m[35m (7.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPoint Load (0.2ms)[0m  [1m[34mSELECT  "points".* FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-09 17:00:00' AND '2018-01-10 16:59:59.999999') LIMIT ?[0m  [["user_id", "<@U8QHYPXC2>"], ["LIMIT", 11]]
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-09 17:00:00' AND '2018-01-10 16:59:59.999999')[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[36mPoint Load (0.2ms)[0m  [1m[34mSELECT "points".* FROM "points"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[31mDELETE FROM "points" WHERE "points"."id" = ?[0m  [["id", 1]]
+  [1m[35m (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "points" WHERE "points"."id" = ?[0m  [["id", 2]]
+  [1m[35m (4.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[31mDELETE FROM "points" WHERE "points"."id" = ?[0m  [["id", 3]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-09 17:00:00' AND '2018-01-10 16:59:59.999999')[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "points" ("user_id", "point", "from_user", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", "<@U8QHYPXC2>"], ["point", 1], ["from_user", "U8Q0M57RQ"], ["created_at", "2018-01-10 13:59:55.146433"], ["updated_at", "2018-01-10 13:59:55.146433"]]
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mPoint Load (0.1ms)[0m  [1m[34mSELECT  "points".* FROM "points" ORDER BY "points"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-09 17:00:00' AND '2018-01-10 16:59:59.999999')[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "points" ("user_id", "point", "from_user", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", "<@U8QHYPXC2>"], ["point", 1], ["from_user", "U8Q0M57RQ"], ["created_at", "2018-01-10 14:01:20.829329"], ["updated_at", "2018-01-10 14:01:20.829329"]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-09 17:00:00' AND '2018-01-10 16:59:59.999999')[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "points" ("user_id", "point", "from_user", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", "<@U8QHYPXC2>"], ["point", 1], ["from_user", "U8Q0M57RQ"], ["created_at", "2018-01-10 14:01:31.975359"], ["updated_at", "2018-01-10 14:01:31.975359"]]
+  [1m[35m (5.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[36mPoint Load (0.2ms)[0m  [1m[34mSELECT "points".* FROM "points"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "points" WHERE "points"."id" = ?[0m  [["id", 4]]
+  [1m[35m (5.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "points" WHERE "points"."id" = ?[0m  [["id", 5]]
+  [1m[35m (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "points" WHERE "points"."id" = ?[0m  [["id", 6]]
+  [1m[35m (7.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-09 17:00:00' AND '2018-01-10 16:59:59.999999')[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "points" ("user_id", "point", "from_user", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", "<@U8QHYPXC2>"], ["point", 1], ["from_user", "U8Q0M57RQ"], ["created_at", "2018-01-10 14:02:32.441860"], ["updated_at", "2018-01-10 14:02:32.441860"]]
+  [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-09 17:00:00' AND '2018-01-10 16:59:59.999999')[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.3ms)[0m  [1m[32mINSERT INTO "points" ("user_id", "point", "from_user", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", "<@U8QHYPXC2>"], ["point", 1], ["from_user", "<@U8Q0M57RQ>"], ["created_at", "2018-01-10 14:03:15.041787"], ["updated_at", "2018-01-10 14:03:15.041787"]]
+  [1m[35m (12.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-09 17:00:00' AND '2018-01-10 16:59:59.999999')[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "points" ("user_id", "point", "from_user", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", "<@U8QHYPXC2>"], ["point", 1], ["from_user", "<@U8Q0M57RQ>"], ["created_at", "2018-01-10 14:03:18.767457"], ["updated_at", "2018-01-10 14:03:18.767457"]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-09 17:00:00' AND '2018-01-10 16:59:59.999999')[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "points" ("user_id", "point", "from_user", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", "<@U8QHYPXC2>"], ["point", 1], ["from_user", "<@U8Q0M57RQ>"], ["created_at", "2018-01-10 14:03:20.297668"], ["updated_at", "2018-01-10 14:03:20.297668"]]
+  [1m[35m (5.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-09 17:00:00' AND '2018-01-10 16:59:59.999999')[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "points" ("user_id", "point", "from_user", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", "<@U8QHYPXC2>"], ["point", 1], ["from_user", "<@U8Q0M57RQ>"], ["created_at", "2018-01-10 14:03:21.645781"], ["updated_at", "2018-01-10 14:03:21.645781"]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-09 17:00:00' AND '2018-01-10 16:59:59.999999')[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[36mPoint Load (0.2ms)[0m  [1m[34mSELECT  "points".* FROM "points" GROUP BY "points"."user_id" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) AS count_all, "points"."user_id" AS points_user_id FROM "points" GROUP BY "points"."user_id"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-09 17:00:00' AND '2018-01-10 16:59:59.999999')[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-09 17:00:00' AND '2018-01-10 16:59:59.999999')[0m  [["user_id", "<@U8Q0NBP7U>"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "points" ("user_id", "point", "from_user", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", "<@U8Q0NBP7U>"], ["point", 1], ["from_user", "<@U8Q0M57RQ>"], ["created_at", "2018-01-10 14:08:39.600570"], ["updated_at", "2018-01-10 14:08:39.600570"]]
+  [1m[35m (5.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@U8Q0NBP7U>"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-09 17:00:00' AND '2018-01-10 16:59:59.999999')[0m  [["user_id", "<@U8Q0NBP7U>"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "points" ("user_id", "point", "from_user", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", "<@U8Q0NBP7U>"], ["point", 1], ["from_user", "<@U8Q0M57RQ>"], ["created_at", "2018-01-10 14:08:44.579105"], ["updated_at", "2018-01-10 14:08:44.579105"]]
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@U8Q0NBP7U>"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-09 17:00:00' AND '2018-01-10 16:59:59.999999')[0m  [["user_id", "<@U8Q0NBP7U>"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO "points" ("user_id", "point", "from_user", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", "<@U8Q0NBP7U>"], ["point", 1], ["from_user", "<@U8Q0M57RQ>"], ["created_at", "2018-01-10 14:08:45.735251"], ["updated_at", "2018-01-10 14:08:45.735251"]]
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@U8Q0NBP7U>"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-09 17:00:00' AND '2018-01-10 16:59:59.999999')[0m  [["user_id", "<@U8Q0NBP7U>"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "points" ("user_id", "point", "from_user", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", "<@U8Q0NBP7U>"], ["point", 1], ["from_user", "<@U8Q0M57RQ>"], ["created_at", "2018-01-10 14:08:46.887146"], ["updated_at", "2018-01-10 14:08:46.887146"]]
+  [1m[35m (9.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@U8Q0NBP7U>"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-09 17:00:00' AND '2018-01-10 16:59:59.999999')[0m  [["user_id", "<@U8Q0NBP7U>"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "points" ("user_id", "point", "from_user", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", "<@U8Q0NBP7U>"], ["point", 1], ["from_user", "<@U8Q0M57RQ>"], ["created_at", "2018-01-10 14:08:48.092828"], ["updated_at", "2018-01-10 14:08:48.092828"]]
+  [1m[35m (6.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@U8Q0NBP7U>"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) AS count_all, "points"."user_id" AS points_user_id FROM "points" GROUP BY "points"."user_id"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT  COUNT(*) AS count_all, "points"."user_id" AS points_user_id FROM "points" GROUP BY "points"."user_id" LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) AS count_all, "points"."user_id" AS points_user_id FROM "points" GROUP BY "points"."user_id"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-09 17:00:00' AND '2018-01-10 16:59:59.999999')[0m  [["user_id", "<@thanks ahahah>"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "points" ("user_id", "point", "from_user", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", "<@thanks ahahah>"], ["point", 1], ["from_user", "<@U8Q0M57RQ>"], ["created_at", "2018-01-10 14:14:35.285702"], ["updated_at", "2018-01-10 14:14:35.285702"]]
+  [1m[35m (8.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@thanks ahahah>"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-09 17:00:00' AND '2018-01-10 16:59:59.999999')[0m  [["user_id", "<@U8Q0M57RQ>"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-09 17:00:00' AND '2018-01-10 16:59:59.999999')[0m  [["user_id", "<@thanks lll>"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "points" ("user_id", "point", "from_user", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", "<@thanks lll>"], ["point", 1], ["from_user", "<@U8Q0M57RQ>"], ["created_at", "2018-01-10 14:15:46.824752"], ["updated_at", "2018-01-10 14:15:46.824752"]]
+  [1m[35m (5.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@thanks lll>"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-09 17:00:00' AND '2018-01-10 16:59:59.999999')[0m  [["user_id", "<@U8Q0M57RQ>"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-10 17:00:00' AND '2018-01-11 16:59:59.999999')[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "points" ("user_id", "point", "from_user", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", "<@U8QHYPXC2>"], ["point", 1], ["from_user", "<@U8Q0M57RQ>"], ["created_at", "2018-01-11 04:51:33.713134"], ["updated_at", "2018-01-11 04:51:33.713134"]]
+  [1m[35m (5.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-10 17:00:00' AND '2018-01-11 16:59:59.999999')[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "points" ("user_id", "point", "from_user", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", "<@U8QHYPXC2>"], ["point", 1], ["from_user", "<@U8Q0M57RQ>"], ["created_at", "2018-01-11 05:38:34.762497"], ["updated_at", "2018-01-11 05:38:34.762497"]]
+  [1m[35m (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[36mPoint Load (0.8ms)[0m  [1m[34mSELECT  "points".* FROM "points" GROUP BY "points"."user_id" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) AS count_all, "points"."user_id" AS points_user_id FROM "points" GROUP BY "points"."user_id"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) AS count_all, "points"."user_id" AS points_user_id FROM "points" GROUP BY "points"."user_id"[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT  COUNT(*) AS count_all, "points"."user_id" AS points_user_id FROM "points" GROUP BY "points"."user_id" LIMIT ?[0m  [["LIMIT", 10]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) AS count_all, "points"."user_id" AS points_user_id FROM "points" GROUP BY "points"."user_id"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT  COUNT(*) AS count_all, "points"."user_id" AS points_user_id FROM "points" GROUP BY "points"."user_id" LIMIT ?[0m  [["LIMIT", 10]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT  COUNT(*) AS count_all, "points"."user_id" AS points_user_id FROM "points" GROUP BY "points"."user_id" LIMIT ?[0m  [["LIMIT", 10]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT  COUNT(*) AS count_all, "points"."user_id" AS points_user_id FROM "points" GROUP BY "points"."user_id" LIMIT ?[0m  [["LIMIT", 10]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-10 17:00:00' AND '2018-01-11 16:59:59.999999')[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[36mPoint Load (0.3ms)[0m  [1m[34mSELECT  "points".* FROM "points" ORDER BY "points"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) AS count_all, "points"."user_id" AS points_user_id FROM "points" GROUP BY "points"."user_id"[0m
+  [1m[36mPoint Load (0.2ms)[0m  [1m[34mSELECT  "points".* FROM "points" WHERE "points"."user_id" IN ('<@thanks ahahah>', '<@thanks lll>') LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mPoint Load (0.2ms)[0m  [1m[34mSELECT "points".* FROM "points" WHERE "points"."user_id" IN ('<@thanks ahahah>', '<@thanks lll>')[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[31mDELETE FROM "points" WHERE "points"."id" = ?[0m  [["id", 17]]
+  [1m[35m (13.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "points" WHERE "points"."id" = ?[0m  [["id", 18]]
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) AS count_all, "points"."user_id" AS points_user_id FROM "points" GROUP BY "points"."user_id"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT  COUNT(*) AS count_all, "points"."user_id" AS points_user_id FROM "points" GROUP BY "points"."user_id" LIMIT ?[0m  [["LIMIT", 10]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT  COUNT(*) AS count_all, "points"."user_id" AS points_user_id FROM "points" GROUP BY "points"."user_id" LIMIT ?[0m  [["LIMIT", 10]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT  COUNT("points"."point") AS count_point, "points"."user_id" AS points_user_id FROM "points" GROUP BY "points"."user_id" ORDER BY count_point LIMIT ?[0m  [["LIMIT", 10]]
+  [1m[36mPoint Load (0.6ms)[0m  [1m[34mSELECT  "points".* FROM "points" GROUP BY "points"."user_id" ORDER BY count_point LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT("points"."point") AS count_point, "points"."user_id" AS points_user_id FROM "points" GROUP BY "points"."user_id" ORDER BY count_point[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT("points"."user_id") AS count_user_id, "points"."user_id" AS points_user_id FROM "points" GROUP BY "points"."user_id" ORDER BY count_user_id[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT("points"."user_id") AS count_user_id, "points"."user_id" AS points_user_id FROM "points" GROUP BY "points"."user_id" ORDER BY user_id asc[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT("points"."user_id") AS count_user_id, "points"."user_id" AS points_user_id FROM "points" GROUP BY "points"."user_id" ORDER BY user_id desc[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) AS count_all, "points"."user_id" AS points_user_id FROM "points" GROUP BY "points"."user_id" ORDER BY user_id desc[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT  COUNT(*) AS count_all, "points"."user_id" AS points_user_id FROM "points" GROUP BY "points"."user_id" ORDER BY user_id desc LIMIT ?[0m  [["LIMIT", 10]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT  COUNT(*) AS count_all, "points"."user_id" AS points_user_id FROM "points" GROUP BY "points"."user_id" ORDER BY user_id desc LIMIT ?[0m  [["LIMIT", 10]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-10 17:00:00' AND '2018-01-11 16:59:59.999999')[0m  [["user_id", "U8Q0M57RQ"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-10 17:00:00' AND '2018-01-11 16:59:59.999999')[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "points" ("user_id", "point", "from_user", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", "<@U8QHYPXC2>"], ["point", 1], ["from_user", "<@U8Q0M57RQ>"], ["created_at", "2018-01-11 08:23:04.239890"], ["updated_at", "2018-01-11 08:23:04.239890"]]
+  [1m[35m (12.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT  COUNT(*) AS count_all, "points"."user_id" AS points_user_id FROM "points" GROUP BY "points"."user_id" ORDER BY user_id desc LIMIT ?[0m  [["LIMIT", 10]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-10 17:00:00' AND '2018-01-11 16:59:59.999999')[0m  [["user_id", "U8Q0M57RQ"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-10 17:00:00' AND '2018-01-11 16:59:59.999999')[0m  [["user_id", "<@U8Q0M57RQ>"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "points" ("user_id", "point", "from_user", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", "<@U8Q0M57RQ>"], ["point", 1], ["from_user", "<@U8Q0M57RQ>"], ["created_at", "2018-01-11 08:24:30.845442"], ["updated_at", "2018-01-11 08:24:30.845442"]]
+  [1m[35m (6.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@U8Q0M57RQ>"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT  COUNT(*) AS count_all, "points"."user_id" AS points_user_id FROM "points" GROUP BY "points"."user_id" ORDER BY user_id desc LIMIT ?[0m  [["LIMIT", 10]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-10 17:00:00' AND '2018-01-11 16:59:59.999999')[0m  [["user_id", "<@U8Q0M57RQ>"]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "points" ("user_id", "point", "from_user", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", "<@U8Q0M57RQ>"], ["point", 1], ["from_user", "<@U8QHYPXC2>"], ["created_at", "2018-01-11 08:25:49.961495"], ["updated_at", "2018-01-11 08:25:49.961495"]]
+  [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@U8Q0M57RQ>"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT  COUNT(*) AS count_all, "points"."user_id" AS points_user_id FROM "points" GROUP BY "points"."user_id" ORDER BY user_id desc LIMIT ?[0m  [["LIMIT", 10]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-10 17:00:00' AND '2018-01-11 16:59:59.999999')[0m  [["user_id", "<@U8Q0M57RQ>"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "points" ("user_id", "point", "from_user", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", "<@U8Q0M57RQ>"], ["point", 1], ["from_user", "<@U8Q0M57RQ>"], ["created_at", "2018-01-11 08:27:02.139952"], ["updated_at", "2018-01-11 08:27:02.139952"]]
+  [1m[35m (6.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@U8Q0M57RQ>"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-10 17:00:00' AND '2018-01-11 16:59:59.999999')[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "points" ("user_id", "point", "from_user", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", "<@U8QHYPXC2>"], ["point", 1], ["from_user", "<@U8Q0M57RQ>"], ["created_at", "2018-01-11 08:34:27.778749"], ["updated_at", "2018-01-11 08:34:27.778749"]]
+  [1m[35m (4.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-10 17:00:00' AND '2018-01-11 16:59:59.999999')[0m  [["user_id", "<@USLACKBOT>"]]
+  [1m[35m (0.6ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "points" ("user_id", "point", "from_user", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", "<@USLACKBOT>"], ["point", 1], ["from_user", "<@U8Q0M57RQ>"], ["created_at", "2018-01-11 08:34:47.054995"], ["updated_at", "2018-01-11 08:34:47.054995"]]
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@USLACKBOT>"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-10 17:00:00' AND '2018-01-11 16:59:59.999999')[0m  [["user_id", "U8Q0M57RQ"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@U8Q0M57RQ>"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-11 17:00:00' AND '2018-01-12 16:59:59.999999')[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "points" ("user_id", "point", "from_user", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", "<@U8QHYPXC2>"], ["point", 1], ["from_user", "<@U8Q0M57RQ>"], ["created_at", "2018-01-12 03:23:20.264341"], ["updated_at", "2018-01-12 03:23:20.264341"]]
+  [1m[35m (4.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@U8QHYPXC2>"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ? AND ("points"."created_at" BETWEEN '2018-01-11 17:00:00' AND '2018-01-12 16:59:59.999999')[0m  [["user_id", "<@U8Q0NBP7U>"]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "points" ("user_id", "point", "from_user", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["user_id", "<@U8Q0NBP7U>"], ["point", 1], ["from_user", "<@U8Q0M57RQ>"], ["created_at", "2018-01-12 03:40:18.584384"], ["updated_at", "2018-01-12 03:40:18.584384"]]
+  [1m[35m (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "points" WHERE "points"."user_id" = ?[0m  [["user_id", "<@U8Q0NBP7U>"]]

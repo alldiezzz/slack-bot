@@ -1,0 +1,9 @@
+development:
+  api_token: "xoxb-297081499015-tRP6uUoAGtKFF13Ym3GFCuNo"
+
+staging:
+  api_token: "xoxb-297081499015-tRP6uUoAGtKFF13Ym3GFCuNo"
+
+live:
+  api_token: "xoxb-297081499015-tRP6uUoAGtKFF13Ym3GFCuNo"
+
