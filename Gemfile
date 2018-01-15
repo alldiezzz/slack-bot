@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'slack-ruby-client'
 gem 'eventmachine'
 gem 'faye-websocket'
+gem 'haml'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -66,6 +67,7 @@ group :test do
   gem 'faker'
 
   gem 'rspec_api_documentation'
+  gem 'factory_bot'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

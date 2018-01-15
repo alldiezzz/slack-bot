@@ -1,7 +1,7 @@
 class BotService
-  def initialize
+  def initialize(token)
     Slack.configure do |config|
-      config.token = "xoxb-297081499015-tRP6uUoAGtKFF13Ym3GFCuNo"
+      config.token = token
     end
   end
 
@@ -10,12 +10,16 @@ class BotService
 
     client.on :message do |data|
       if data.text.present?
-        mentioned_user = get_mentioned_user(data.text)
-        if thanks_list(data.text)
-          reply_thanks_message(mentioned_user, data, client)
-        elsif data.text.include?("<@#{client.self.id}> leaderboard")
-          leaderboard(client, data)
-        elsif data.text == "karma" && data.channel[0..2].include?("D8")
+        mentioned_users(data.text).each do |user|
+          mentioned_user = user
+          if thanks_list(data.text)
+            reply_thanks_message(mentioned_user, data, client)
+          elsif data.text.include?("<@#{client.self.id}> leaderboard")
+            leaderboard(client, data)
+          end
+        end
+
+        if data.text == "karma" && data.channel[0..2].include?("D8")
           check_remaining_point_today(data, client)
         end
       end
@@ -24,11 +28,23 @@ class BotService
     client.start!
   end
 
+  def mentioned_users(text)
+    if text.include?("<@")
+      splitter = text.split("<@")
+      result = []
+      splitter.each do |s|
+        result << "<@" + s if s.include?(">")
+      end
+      # "<@#{text.split("<@").last.split(">").first}>"
+      result
+    else
+      []
+    end
+  end
+
   def get_mentioned_user(text)
     if text.include?("<@")
       "<@#{text.split("<@").last.split(">").first}>"
-    else
-      nil
     end
   end
 
@@ -73,7 +89,7 @@ class BotService
   end
 
   def leaderboard(client, data)
-    top_ten = Point.group(:user_id).order("user_id desc").limit(10).count
+    top_ten = Point.group(:user_id).order("count_user_id desc").count("user_id")
     text = "No Name     Point"
     top_ten.each_with_index do |v,i|
       text += "\n #{i+1}   #{v[0]}    #{v[1]}"
